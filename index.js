@@ -19,7 +19,7 @@ function nuevaImpresion (){
         //tamaño
         let tamañoIngresado = prompt ("Elija un tamaño en cm entre 1 y 20 de alto para la impresión 3d")
 
-    while (tamañoIngresado>20 || (isNaN(tamañoIngresado)) ){
+    while (tamañoIngresado>20 || (isNaN(tamañoIngresado)) || tamañoIngresado<0 ){
         tamañoIngresado = prompt ("Elija un número entre 1 y 20");
         }
         //complejidad
