@@ -13,6 +13,10 @@ class Impresion{
     } 
 }
 
+function productoAgregado(){
+    alert ("Su producto ha sido agregado, vealo en la consola del navegador eligiendo 2 en el menu.")
+}
+
 function nuevaImpresion (){
         //nombre
         let nombre = prompt ("Escriba el nombre de lo que quiere imprimir")
@@ -35,10 +39,13 @@ function nuevaImpresion (){
     function convertirComplejidad(){
     switch (preguntaComplejidad){
         case "alta":  complejidad = 1.50
+        productoAgregado()
         break;
         case "mediana":  complejidad = 1.25
+        productoAgregado()
         break;
         case "baja": complejidad = 1
+        productoAgregado();
         break;
         default: preguntarComplejidadDeNuevo()
         }
@@ -50,7 +57,7 @@ function nuevaImpresion (){
 
 
 function menu(){
-    let eleccionMenu = parseInt(prompt ("Elija una opcion: 1- Agregar impresión 2- Impresiones en el carrito 3- Salir"))
+    let eleccionMenu = parseInt(prompt ("Elija una opcion: 1- Agregar impresión 2- Impresiones en el carrito (en consola) 3- Salir"))
     if (eleccionMenu <= 3 && eleccionMenu >= 1)  
     switch (eleccionMenu){
     case 1: nuevaImpresion(); menu()
