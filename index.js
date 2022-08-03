@@ -61,14 +61,14 @@ function menu(){
     if (eleccionMenu <= 3 && eleccionMenu >= 1)  
     switch (eleccionMenu){
     case 1: nuevaImpresion(); menu()
-    break;
+    return;
     case 2: listaFinal();
-    break;
+    return;
     case 3: alert("¡Gracias por venir, vuelva pronto!")
-    break;
+    return;
     default: alert ("Error de switch")
     }
-    else alert ("Elija un valor válido");
+    else alert ("Elija un valor válido o elija 3 pasa salir");
     menu()
 }
 
@@ -81,4 +81,3 @@ function listaFinal(){
 }
 
 menu()
-
