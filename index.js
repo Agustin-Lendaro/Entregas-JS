@@ -1,9 +1,8 @@
 //let prioridad
 let factorVelocidad = 3
-let precioBase = 250
+let precioBase = 375
 
 //array de productos y declaracion de clase y constructor
-let productos = []
 
 class Impresion{
     constructor(id, nombre, tamaño, complejidad){
@@ -14,21 +13,8 @@ class Impresion{
     } 
 }
 
-
-//comparo array de productos con la memoria
-let productosEnMemoria = JSON.parse(localStorage.getItem("memoriaCarrito"))
-
-//igualo si hay carro en memoria
-if (productosEnMemoria != null){
-productos = productosEnMemoria
-}
-
-
-
-let memoriaCarrito
-
-
-
+//ve si hay productos guardados en memoria o declara carrito vacio
+let productos = JSON.parse(localStorage.getItem("memoriaCarrito")) || []
 
 //captura de botones y declaración de eventos
 const agregar = document.getElementById("agregar")
@@ -37,11 +23,8 @@ const mostrar = document.getElementById("mostrar")
 agregar.addEventListener("click", guardarImpresion)
 mostrar.addEventListener("click", mostrarCarrito)
 
-
-
 const bienvenida = document.getElementById("bienvenida")
 const actividadMemoria = document.getElementById("actividadMemoria")
-
 
 const guardarMemoria = document.getElementById("guardarMemoria")
 const borrarMemoria = document.getElementById("borrarMemoria")
@@ -49,23 +32,11 @@ const borrarMemoria = document.getElementById("borrarMemoria")
 guardarMemoria.addEventListener("click", guardarCarrito)
 borrarMemoria.addEventListener("click", borrarCarrito)
 
+//chequeo inicial de memoria del carrito, vacio o con algo
 
-//chequeo inicial de memoria del carrito
-
-
-
-if (localStorage.getItem("memoriaCarrito")=== null){
-    console.log(JSON.parse(localStorage.getItem("memoriaCarrito")));
-    bienvenida.innerHTML = "La memoria detectó que su carrito está vacío."
-} else {
-    
-    bienvenida.innerHTML = `La memoria detectó que su carrito tiene ${JSON.parse(localStorage.getItem("memoriaCarrito")).length} objetos.`
-}
-
+localStorage.getItem("memoriaCarrito")=== null ? bienvenida.innerHTML = "La memoria detectó que su carrito está vacío." : bienvenida.innerHTML = `La memoria detectó que su carrito tiene ${JSON.parse(localStorage.getItem("memoriaCarrito")).length} objetos.`
 
 //funciones
-
-
 function convertirComplejidad(complejidad){
     switch (complejidad){
         case "alta": return factorComplejidad = 1.50
@@ -74,7 +45,6 @@ function convertirComplejidad(complejidad){
         default: alert("error de switch")
         }
     }
-
 
 
 function guardarImpresion(){
@@ -94,101 +64,50 @@ function guardarImpresion(){
     }
 
 
-
+function desestructurador (objeto) {
+    return {nombre, tamaño, complejidad} = objeto  
+}
 
 let carrito = document.getElementById("carrito")
 function mostrarCarrito(){
     carrito.innerHTML=""
     productos.forEach((impresion)=>{
-        let factorComplejidad = convertirComplejidad(impresion.complejidad)
+        desestructurador (impresion)  //desestructuracion
+        let factorComplejidad = convertirComplejidad(complejidad)
         let nuevaImpresion = document.createElement("div")
-        nuevaImpresion.innerHTML = `<h3>${impresion.nombre} tiene un tamaño de ${impresion.tamaño}cm y una complejidad ${impresion.complejidad}, lo que significa un costo de $${factorComplejidad* impresion.tamaño * precioBase} y una demora de aproximadamente ${impresion.tamaño*factorComplejidad/factorVelocidad} días.</h3>`
+        nuevaImpresion.innerHTML = `<h3>${nombre} tiene un tamaño de ${tamaño}cm y una complejidad ${complejidad}, lo que significa un costo de $${factorComplejidad* tamaño * precioBase} y una demora de aproximadamente ${tamaño*factorComplejidad/factorVelocidad} días.</h3>`
         carrito.appendChild(nuevaImpresion) //agrega esto alfinal del elemento
     }) 
 }
-
 
 function guardarCarrito(){
     console.log(productos.length);
     if (productos.length==0){
         actividadMemoria.innerHTML = "Su carrito está vacío, no guardamos nada"
+        swal({
+            title: "Carritto vacío!",
+            text: "Su carrito está vacío, no hay nada para guardar.",
+            icon: "error",
+            confirmButtonText: "Ok, voy a agregar algo"
+        })
     }
-    else {memoriaCarrito = localStorage.setItem("memoriaCarrito", JSON.stringify(productos))
-    actividadMemoria.innerHTML = "Se guardó su carrito, puede refrescar la página."
+    else { localStorage.setItem("memoriaCarrito", JSON.stringify(productos))
+    actividadMemoria.innerHTML = "Se guardó su carrito, puede refrescar la página.",
+    swal({
+        title: "Carritto guardado!",
+        text: "Se ha guardado tu carrito con éxito.",
+        icon: "success",
+        confirmButtonText: "Ok"
+    })
     }
 }
 
 function borrarCarrito(){
     localStorage.removeItem("memoriaCarrito")
     actividadMemoria.innerHTML = "Se ha borrado su carrito"
+    swal({
+        text: "Se ha eliminado la memoria con éxito.",
+        confirmButtonText: "Ok"
+    })
 }
 
-/* funciones viejas 
-
-function productoAgregado(){
-    alert ("Su producto ha sido agregado, vealo en la consola del navegador eligiendo 2 en el menu.")
-}
-
-function nuevaImpresion (){
-        //nombre
-        let nombre = prompt ("Escriba el nombre de lo que quiere imprimir")
-        //tamaño
-        let tamañoIngresado = prompt ("Elija un tamaño en cm entre 1 y 20 de alto para la impresión 3d")
-
-    while (tamañoIngresado>20 || (isNaN(tamañoIngresado)) || tamañoIngresado<1 ){
-        tamañoIngresado = prompt ("Elija un número entre 1 y 20");
-        }
-        //complejidad
-        let preguntaComplejidad = prompt ("Elija nivel de complejidad alta, mediana, baja").toLowerCase()
-         convertirComplejidad()
-
-        function preguntarComplejidadDeNuevo (){ while (preguntaComplejidad != "alta" && preguntaComplejidad != "mediana" && preguntaComplejidad != "baja"){
-        preguntaComplejidad = prompt ("Elija un valor válido: alta, mediana, baja").toLowerCase()
-        convertirComplejidad()
-        }
-    }
-
-    function convertirComplejidad(){
-    switch (preguntaComplejidad){
-        case "alta":  complejidad = 1.50
-        productoAgregado()
-        break;
-        case "mediana":  complejidad = 1.25
-        productoAgregado()
-        break;
-        case "baja": complejidad = 1
-        productoAgregado();
-        break;
-        default: preguntarComplejidadDeNuevo()
-        }
-    }
-    
-    let nuevoProducto = new Impresion (nombre, tamañoIngresado, complejidad)
-    productos.push(nuevoProducto)
-}
-
-
-function menu(){
-    let eleccionMenu = parseInt(prompt ("Elija una opcion: 1- Agregar impresión 2- Impresiones en el carrito (en consola) 3- Salir"))
-    if (eleccionMenu <= 3 && eleccionMenu >= 1)  
-    switch (eleccionMenu){
-    case 1: nuevaImpresion(); menu()
-    return;
-    case 2: listaFinal();
-    return;
-    case 3: alert("¡Gracias por venir, vuelva pronto!")
-    return;
-    default: alert ("Error de switch")
-    }
-    else alert ("Elija un valor válido o elija 3 pasa salir");
-    menu()
-}
-
-function listaFinal(){
-    if (productos.length == 0)
-    alert ("Su carrito está vacío, agregue algo eligiendo 1.")
-    else 
-    productos.forEach((producto) => console.log(`Su producto ${producto.nombre} tiene un valor de $${producto.tamaño * precioBase * producto.complejidad} y un tiempo aproximado de impresión de ${parseInt(producto.tamaño * producto.complejidad / factorVelocidad)} dias.`));
-    menu()
-}
-*/
