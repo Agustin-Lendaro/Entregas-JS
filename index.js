@@ -52,6 +52,7 @@ function guardarImpresion(){
     let nombreInput = document.getElementById("nombreInput")
     let tamañoInput = document.getElementById("tamañoInput")
     let complejidadInput = document.getElementById("complejidadInput")
+    
     let impresionCreada = new Impresion(productos.length+1, nombreInput.value, tamañoInput.value, complejidadInput.value)
     console.log(impresionCreada)
     //agregar al array
@@ -110,4 +111,11 @@ function borrarCarrito(){
         confirmButtonText: "Ok"
     })
 }
-
+let gifRandom = Math.floor(Math.random()*27)
+fetch(`https://api.giphy.com/v1/gifs/search?q=3d+printing&api_key=aD8xW1PUoE8tU5HEjDI1tWCNltvzhJvc&limit=1&offset=${gifRandom}`)
+    .then((response)=> response.json())
+    .then((contenido) => {
+        console.log(contenido)
+        let gifs = document.getElementById("gifs")
+        gifs.innerHTML = `<img src=${contenido.data[0].images.fixed_height_downsampled.url} alt=${contenido.data[0].images.fixed_height_downsampled.title}>`
+    });
