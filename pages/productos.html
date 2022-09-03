@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - 3D Nerd</title>
+    <meta name="keywords" content="3D printing, impresora 3d, impresiones 3d, muñecos, llaveros, insertos">
+    <meta name="description" content="Nuestros productos. Las mejores impresiones 3D de Paraná">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+          @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+    </style>
+    
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+
+    <!-- link bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <header class="header">
+        <div class="logoYNombre">
+            <a href="../index.html"><img src="../img/3d-nerd-logo.jpg" alt="Logo de la empresa" class="logoEmpresa"></a>
+            <h4 class="headerNombre">3D NERD</h4>
+        </div>
+        <nav>
+            <ul class="navBar">
+                <li class="boton"><a href="../index.html">Inicio</a></li>
+                <li class="boton"><a href="./galeria.html">Galería</a></li>
+                <li class="boton"><a href="./productos.html">Productos</a></li>
+                <li class="boton"><a a href="./contacto.html">Contacto</a></li>
+                <li class="boton"><a href="./preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+            </ul>            
+        </nav>
+    </header>
+
+    <main>
+    <h1 class="tituloProductos">Calculadora de precio y tiempo.</h1>
+
+
+    
+
+    <div class="w-75 mx-auto p-2">
+      <form class="d-flex p-2 mx-auto">
+        <label for="nombre">Ingrese nombre de lo que va a imprimir</label>
+        <input type="text" id="nombreInput" name="nombre"> 
+        <label for="tamaño">Tamaño en cm:</label>
+        <select name="tamaño" id="tamañoInput">
+            <option value= 1>1</option>
+            <option value= 2>2</option>
+            <option value= 3>3</option>
+            <option value= 4>4</option>
+            <option value= 5>5</option>
+            <option value= 6>6</option>
+            <option value= 7>7</option>
+            <option value= 8>8</option>
+            <option value= 9>9</option>
+            <option value= 10>10</option>
+            <option value= 11>11</option>
+            <option value= 12>12</option>
+            <option value= 13>13</option>
+            <option value= 14>14</option>
+            <option value= 15>15</option>
+            <option value= 16>16</option>
+            <option value= 17>17</option>
+            <option value= 18>18</option>
+            <option value= 19>19</option>
+            <option value= 20>20</option>
+        </select>
+        <label for="complejidad">Complejidad</label>
+        <select name="complejidad" id="complejidadInput">
+            <option value="baja">Baja</option>
+            <option value="mediana">Mediana</option>
+            <option value="alta">Alta</option>
+        </select>
+        </form>
+      
+    <div class="">
+      <button class="btn btn-outline-primary" id="agregar">Agregar al carro</button>
+      <button class="btn btn-outline-primary" id="guardarMemoria">Guardar en Memoria</button>
+      <button class="btn btn-outline-primary" id="mostrar">Mostrar el carro</button>
+      <button class="btn btn-outline-primary" id="borrarMemoria">Borrar la Memoria</button>
+      
+    </div>
+    <div class="d-flex flex-column m-auto">
+      <div id="bienvenida"></div>
+      <div id="actividadMemoria"></div>
+      <div id="carrito"></div>
+      <div id="gifs"></div>
+    </div>
+    </main>
+
+    <footer class="footer">
+        <div>
+          <a href="https://www.facebook.com/3D-Nerd-2087391531379772" target="_blank"><img src="../img/facebook.png" alt="Logo de Facebook" class="imagenRedSocial"> </a>
+          <a href="https://www.instagram.com/nerd_3d/" target="_blank"><img src="../img/instagram.png" alt="Logo de Instagram" class="imagenRedSocial"></a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script  src="../JS.js"></script>
+    
+</body>
+</html>

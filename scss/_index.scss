@@ -1,0 +1,19 @@
+#mainCarousel{
+    max-width: 480px;
+    min-width: 25vw;
+    margin: auto;
+}
+.mainIndex{
+    
+    .tituloIndex{
+        @extend .h1
+    }
+    .titulo{
+        font-size: 50px;
+        max-width: 90vw;
+        margin: 35px auto 10px auto;
+        padding: 20px;
+    }
+    
+    
+}

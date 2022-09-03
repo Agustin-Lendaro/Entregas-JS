@@ -1,0 +1,105 @@
+.header{
+    .logoYNombre{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-height: 180px;
+        max-width: auto;
+        background-image: url(../img/header.jpg);
+    .logoEmpresa{
+        min-width: 75px;
+        min-height: 75px;
+        max-width: 8vw;
+        max-height: 8vw;
+        object-fit: contain;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+    .logoEmpresa:hover{
+        transform: scale(1.1);
+    }
+    .headerNombre{
+        -webkit-text-stroke: 1px white; /* color y grosor */
+        font-size: 3em;
+        font-weight: bold;
+        font-family: 'Titan One', cursive;
+    }
+    }
+    nav{
+        ul{
+            
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            background-color: $NavBar;
+            li{
+                text-decoration:none;
+                font-size: 25px;
+                font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+                transition: .2s;
+            }
+            li:hover{
+                transform: scale(1.3);
+                text-decoration: underline;
+                text-decoration-thickness: 10%;
+            }
+            a{
+                text-decoration: none;
+                color: black;
+            }
+        }
+    }
+}
+
+/*comienzo responsive*/
+
+@media screen and (max-width: 576px){
+
+    .header{
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+        "logoYNombre" 
+        "navBar";
+    }
+    
+    .logoYNombre{
+        grid-area: logoYNombre;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-height: 180px;
+        max-width: auto;
+    }
+    
+    .header_nombre{
+        font-size: 2em;
+    }
+    
+    .logoEmpresa{
+        min-width: 75px;
+        min-height: 75px;
+        max-width: 8vw;
+        max-height: 8vw;
+        object-fit: contain;
+        border-radius: 50%
+    }
+    
+    .navBar{
+        background-color: #79DAE8;
+        grid-area: navBar;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+        
+    
+    .navBar li, .navBar li a{
+        list-style: none;
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+        font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+        margin: auto;
+    }
+}

@@ -1,61 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>  <!-- sweet alert -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Clase 9 - eventos</title>
+    <title>3D Nerd - Impresiones en 3D</title>
+    <meta name="keywords" content="3D printing, impresora 3d, impresiones 3d, muñecos, llaveros, insertos">
+    <meta name="description" content="Las mejores impresiones 3D de Paraná">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- link bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    
+        <!--Acá se importa la fuente-->
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+        </style>
 </head>
 <body>
-    
+    <header class="header">
+        <div class="logoYNombre">
+            <a href="./index.html"><img src="./img/3d-nerd-logo.jpg" alt="Logo de la empresa" class="logoEmpresa"></a>
+            <h4 class="headerNombre">3D NERD</h4>
+        </div>
+        <nav>
+            <ul class="navBar">
+                <li class="boton"><a href="./index.html">Inicio</a></li>
+                <li class="boton"><a href="./pages/galeria.html">Galería</a></li>
+                <li class="boton"><a href="./pages/productos.html">Productos</a></li>
+                <li class="boton"><a href="./pages/contacto.html">Contacto</a></li>
+                <li class="boton"><a href="./pages/preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+            </ul>            
+        </nav>
+    </header>
+      
+    <main class="mainIndex">
 
-    <form>
-        <label for="nombre">Ingrese nombre de lo que va a imprimir</label>
-        <input type="text" id="nombreInput" name="nombre"> <br>
-        <label for="tamaño">Tamaño en cm:</label>
-        <select name="tamaño" id="tamañoInput">
-            <option value= 1>1</option>
-            <option value= 2>2</option>
-            <option value= 3>3</option>
-            <option value= 4>4</option>
-            <option value= 5>5</option>
-            <option value= 6>6</option>
-            <option value= 7>7</option>
-            <option value= 8>8</option>
-            <option value= 9>9</option>
-            <option value= 10>10</option>
-            <option value= 11>11</option>
-            <option value= 12>12</option>
-            <option value= 13>13</option>
-            <option value= 14>14</option>
-            <option value= 15>15</option>
-            <option value= 16>16</option>
-            <option value= 17>17</option>
-            <option value= 18>18</option>
-            <option value= 19>19</option>
-            <option value= 20>20</option>
-        </select>
-        <br>
-        <label for="complejidad">Complejidad</label>
-        <select name="complejidad" id="complejidadInput">
-            <option value="baja">Baja</option>
-            <option value="mediana">Mediana</option>
-            <option value="alta">Alta</option>
-        </select>
-        </form>
-        <br>
+        <!--inicio carrusel de imágenes-->
 
-    <button id="agregar">Agregar al carro</button><br><button id="guardarMemoria">Guardar en Memoria</button>
-    <button id="mostrar">Mostrar el carro</button><br><button id="borrarMemoria">Borrar la Memoria</button>
+    <div id="mainCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+            <img src="./img/portaSahumerios.jpg" class="d-block w-100" alt="Porta Sahumerios">
+         </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="./img/groot.jpg" class="d-block w-100" alt="Muñeco de Groot">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="./img/kick.jpg" class="d-block w-100" alt="Muñeco de Kick Buttowski">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
 
-    <div id="bienvenida"></div>
-    <div id="actividadMemoria"></div>
-    <div id="carrito"></div>
-    <div id="gifs"></div>
-    
-    
-    <script  src="index.js"></script>
-    
+      
+
+      <!-- fin carrusel -->
+
+        <h1 class="tituloIndex">¡Las mejores impresiones 3d!</h1>
+        <div>
+            <h4 class="titulo">Muñecos</h4>
+            <p class="parrafo">Hay muchos personajes que no tienen muñecos oficiales o tienen costos demasiado altos. Podemos imprimir lo que quieras, grande, chico, desde algo mainstream como Pikachu hasta un anime que nadie conoce.</p>
+        </div>
+        <div>
+            <h4 class="titulo">Accesorios</h4>
+            <p class="parrafo">Muchos logos y diseños se prestan perfectamente para ser llavero. Mostranos el logo de tu juego favorito o de tu banda y te lo hacemos llaveros o pines.</p>
+        </div>
+        <div>
+          <h4 class="titulo">Insertos de juegos</h4>
+          <p class="parrafo">El mundo de los juegos de mesa es engañosamente enorme. Muchos juegos tienen tantos componentes que es difícil tener todo ordenado. Si pensás que un juego de mesa tuyo tiene demasiadas cosas, seguramente hay un inserto para imprimir y no dejar que nada se te pierda.</p>
+      </div>
+      <div>
+        <h4 class="titulo">¡Y más!</h4>
+        <p class="parrafo">Stand para auriculares, repuestos para instrumentos, mates y más.</p>
+    </div>
+        
+
+    </main>
+       
+    <footer class="footer">
+        <div>
+          <a href="https://www.facebook.com/3D-Nerd-2087391531379772" target="_blank"><img src="./img/facebook.png" alt="Logo de Facebook" class="imagenRedSocial"> </a>
+          <a href="https://www.instagram.com/nerd_3d/" target="_blank"><img src="./img/instagram.png" alt="Logo de Instagram" class="imagenRedSocial"></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,19 @@
+footer{
+    display: flex;
+    justify-content: flex-end;
+    border-top: 5px solid black;
+    margin-top: auto;
+    margin-bottom: none;
+    width: 100%;
+    background-color: $Footer;
+    align-self: flex-end; 
+    div{
+        a{
+            text-decoration: none;
+            .imagenRedSocial{
+                @include tamañoImagen(100px, 75px, 100px, 75px);
+                padding: 1em;
+            }
+        }
+    }
+}

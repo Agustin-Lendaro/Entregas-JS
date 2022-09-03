@@ -1,0 +1,175 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box; }
+
+body {
+  background-color: #f2fafc !important;
+  min-height: 100vh;
+  /*Para hacer que el footer siempre este abajo sin importar el tamaño*/
+  display: flex;
+  flex-direction: column; }
+
+.h1, .mainIndex .tituloIndex, .tituloContacto, .tituloGaleria, .tituloProductos {
+  font-size: 50px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  max-width: 50vw;
+  margin: 30px auto 10px auto;
+  text-align: center; }
+
+.parrafo, .parrafoPreguntas, .parrafoProducto {
+  font-size: 24px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  max-width: 90vw;
+  margin: 30px auto 50px auto;
+  padding-left: 20px; }
+
+.header .logoYNombre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 180px;
+  max-width: auto;
+  background-image: url(../img/header.jpg); }
+  .header .logoYNombre .logoEmpresa {
+    min-width: 75px;
+    min-height: 75px;
+    max-width: 8vw;
+    max-height: 8vw;
+    object-fit: contain;
+    border-radius: 50%;
+    transition: 0.3s; }
+  .header .logoYNombre .logoEmpresa:hover {
+    transform: scale(1.1); }
+  .header .logoYNombre .headerNombre {
+    -webkit-text-stroke: 1px white;
+    /* color y grosor */
+    font-size: 3em;
+    font-weight: bold;
+    font-family: 'Titan One', cursive; }
+
+.header nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  background-color: #79DAE8; }
+  .header nav ul li {
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    transition: .2s; }
+  .header nav ul li:hover {
+    transform: scale(1.3);
+    text-decoration: underline;
+    text-decoration-thickness: 10%; }
+  .header nav ul a {
+    text-decoration: none;
+    color: black; }
+
+/*comienzo responsive*/
+@media screen and (max-width: 576px) {
+  .header {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-areas: "logoYNombre"  "navBar"; }
+  .logoYNombre {
+    grid-area: logoYNombre;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 180px;
+    max-width: auto; }
+  .header_nombre {
+    font-size: 2em; }
+  .logoEmpresa {
+    min-width: 75px;
+    min-height: 75px;
+    max-width: 8vw;
+    max-height: 8vw;
+    object-fit: contain;
+    border-radius: 50%; }
+  .navBar {
+    background-color: #79DAE8;
+    grid-area: navBar;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; }
+  .navBar li, .navBar li a {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    margin: auto; } }
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 5px solid black;
+  margin-top: auto;
+  margin-bottom: none;
+  width: 100%;
+  background-color: #0AA1DD;
+  align-self: flex-end; }
+  footer div a {
+    text-decoration: none; }
+    footer div a .imagenRedSocial {
+      max-width: 100px;
+      min-width: 75px;
+      max-height: 100px;
+      min-height: 75px;
+      padding: 1em; }
+
+#mainCarousel {
+  max-width: 480px;
+  min-width: 25vw;
+  margin: auto; }
+
+.mainIndex .titulo {
+  font-size: 50px;
+  max-width: 90vw;
+  margin: 35px auto 10px auto;
+  padding: 20px; }
+
+#contacto div {
+  align-items: center; }
+  #contacto div .imagenContacto {
+    max-width: 60px;
+    min-width: 40px;
+    max-height: 60px;
+    min-height: 40px; }
+  #contacto div a {
+    text-decoration: none; }
+  #contacto div .contacto {
+    color: black; }
+
+.containerContacto {
+  display: flex;
+  justify-content: space-around; }
+
+.mapa {
+  max-width: 80vw; }
+
+@media screen and (max-width: 576px) {
+  .containerContacto {
+    display: flex;
+    flex-direction: column; } }
+
+.tituloGaleria {
+  font-size: 2.5em; }
+
+#galeria {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.parrafoPreguntas {
+  text-align: center; }
+
+.tituloProductos {
+  font-size: 40px; }
+
+.parrafoProducto {
+  text-align: center; }

@@ -1,0 +1,36 @@
+.tituloContacto{
+    @extend .h1
+}
+
+#contacto{
+    div{
+        align-items: center;
+        .imagenContacto{
+        @include tamañoImagen(60px, 40px, 60px, 40px)   
+        }
+        a{
+        text-decoration: none;
+        }
+        .contacto{
+            
+            color: black;
+        }
+    }
+    
+}
+
+.containerContacto{
+    display: flex;
+    justify-content: space-around;
+}
+
+.mapa{
+    max-width: 80vw;
+}
+
+@media screen and (max-width: 576px){
+    .containerContacto{
+        display: flex;
+        flex-direction: column;
+    }
+}

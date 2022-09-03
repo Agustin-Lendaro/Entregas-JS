@@ -1,4 +1,5 @@
-//let prioridad
+
+
 let factorVelocidad = 3
 let precioBase = 375
 
@@ -76,7 +77,7 @@ function mostrarCarrito(){
         desestructurador (impresion)  //desestructuracion
         let factorComplejidad = convertirComplejidad(complejidad)
         let nuevaImpresion = document.createElement("div")
-        nuevaImpresion.innerHTML = `<h3>${nombre} tiene un tamaño de ${tamaño}cm y una complejidad ${complejidad}, lo que significa un costo de $${factorComplejidad* tamaño * precioBase} y una demora de aproximadamente ${tamaño*factorComplejidad/factorVelocidad} días.</h3>`
+        nuevaImpresion.innerHTML = `<p class = "mx-auto p-2">${nombre} tiene un tamaño de ${tamaño}cm y una complejidad ${complejidad}, lo que significa un costo de $${factorComplejidad* tamaño * precioBase} y una demora de aproximadamente ${tamaño*factorComplejidad/factorVelocidad} días.</p>`
         carrito.appendChild(nuevaImpresion) //agrega esto alfinal del elemento
     }) 
 }
