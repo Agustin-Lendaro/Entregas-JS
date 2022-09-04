@@ -37,7 +37,7 @@ localStorage.getItem("memoriaCarrito")=== null ? actividadMemoria.innerHTML = "N
 
 let acumuladorId
 
-localStorage.getItem("memoriaCarrito")=== null ?  acumuladorId = 0 : acumuladorId = productos.length
+localStorage.getItem("memoriaCarrito")=== null ?  acumuladorId = 0 : acumuladorId = productos[productos.length -1].id + 1
 
 console.log(acumuladorId);
 
@@ -74,7 +74,7 @@ function guardarImpresion(){
         //agregar al array
         productos.push(impresionCreada)
         //aumentar acumulador
-        acumuladorId
+        acumuladorId++
         //para chequear
         console.log(nombreInput.value)
         console.log(tamañoInput.value)
@@ -106,6 +106,7 @@ function eliminarItem(id){
     console.log(productos);
     productos.splice(id-1, 1)
     console.log(productos);
+    guardarCarrito()
     mostrarCarrito()
 }
 
