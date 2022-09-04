@@ -2,7 +2,6 @@ let factorVelocidad = 3
 let precioBase = 375
 
 //declaracion de clase y constructor
-
 class Impresion{
     constructor(id, nombre, tamaño, complejidad){
         this.id = id,
@@ -30,7 +29,6 @@ const borrarMemoria = document.getElementById("borrarMemoria")
 guardarMemoria.addEventListener("click", guardarCarrito)
 borrarMemoria.addEventListener("click", borrarCarrito)
 
-
 //chequeo inicial de memoria del carrito, vacio o con algo y de id
 
 localStorage.getItem("memoriaCarrito")=== null ? actividadMemoria.innerHTML = "No tiene ningun producto guardado en la memoria." : actividadMemoria.innerHTML = `La memoria detectó que su carrito tiene ${JSON.parse(localStorage.getItem("memoriaCarrito")).length} objetos.`
@@ -40,7 +38,6 @@ let acumuladorId
 localStorage.getItem("memoriaCarrito")=== null ?  acumuladorId = 0 : acumuladorId = productos[productos.length -1].id + 1
 
 console.log(acumuladorId);
-
 
 //funciones
 function convertirComplejidad(complejidad){
@@ -95,7 +92,7 @@ function mostrarCarrito(){
         let factorComplejidad = convertirComplejidad(complejidad)
         let nuevaImpresion = document.createElement("div")
         nuevaImpresion.classList.add ("d-flex", "flex-row", "m-auto")
-        nuevaImpresion.innerHTML = `<p class = "mx-auto p-1">${nombre} tiene un tamaño de ${tamaño}cm y una complejidad ${complejidad}, lo que significa un costo de $${factorComplejidad* tamaño * precioBase} y una demora de aproximadamente ${tamaño*factorComplejidad/factorVelocidad} días.</p> <button class="btn btn-outline-secondary eliminar" onclick="eliminarItem(${id})">Eliminar del carro</button>`
+        nuevaImpresion.innerHTML = `<p class = "mx-auto p-1">${nombre} tiene un tamaño de ${tamaño}cm y una complejidad ${complejidad}, lo que significa un costo de $${factorComplejidad* tamaño * precioBase} y una demora de aproximadamente ${parseInt(tamaño*factorComplejidad/factorVelocidad) + 1} días.</p> <button class="btn btn-outline-secondary eliminar" onclick="eliminarItem(${id})">Eliminar del carro</button>`
         carrito.appendChild(nuevaImpresion) //agrega esto al final del elemento
     }) 
     
