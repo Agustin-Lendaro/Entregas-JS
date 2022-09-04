@@ -1,9 +1,7 @@
-
-
 let factorVelocidad = 3
 let precioBase = 375
 
-//array de productos y declaracion de clase y constructor
+//declaracion de clase y constructor
 
 class Impresion{
     constructor(id, nombre, tamaño, complejidad){
@@ -24,7 +22,6 @@ const mostrar = document.getElementById("mostrar")
 agregar.addEventListener("click", guardarImpresion)
 mostrar.addEventListener("click", mostrarCarrito)
 
-const bienvenida = document.getElementById("bienvenida")
 const actividadMemoria = document.getElementById("actividadMemoria")
 
 const guardarMemoria = document.getElementById("guardarMemoria")
@@ -33,20 +30,27 @@ const borrarMemoria = document.getElementById("borrarMemoria")
 guardarMemoria.addEventListener("click", guardarCarrito)
 borrarMemoria.addEventListener("click", borrarCarrito)
 
-//chequeo inicial de memoria del carrito, vacio o con algo
 
-localStorage.getItem("memoriaCarrito")=== null ? bienvenida.innerHTML = "La memoria detectó que su carrito está vacío." : bienvenida.innerHTML = `La memoria detectó que su carrito tiene ${JSON.parse(localStorage.getItem("memoriaCarrito")).length} objetos.`
+//chequeo inicial de memoria del carrito, vacio o con algo y de id
+
+localStorage.getItem("memoriaCarrito")=== null ? actividadMemoria.innerHTML = "No tiene ningun producto guardado en la memoria." : actividadMemoria.innerHTML = `La memoria detectó que su carrito tiene ${JSON.parse(localStorage.getItem("memoriaCarrito")).length} objetos.`
+
+let acumuladorId
+
+localStorage.getItem("memoriaCarrito")=== null ?  acumuladorId = 0 : acumuladorId = productos.length
+
+console.log(acumuladorId);
+
 
 //funciones
 function convertirComplejidad(complejidad){
     switch (complejidad){
-        case "alta": return factorComplejidad = 1.50
-        case "mediana": return factorComplejidad = 1.25
+        case "alta": return factorComplejidad = 1.75
+        case "mediana": return factorComplejidad = 1.40
         case "baja": return factorComplejidad = 1;
         default: alert("error de switch")
         }
     }
-
 
 function guardarImpresion(){
     //capturar valores
@@ -54,20 +58,33 @@ function guardarImpresion(){
     let tamañoInput = document.getElementById("tamañoInput")
     let complejidadInput = document.getElementById("complejidadInput")
     
-    let impresionCreada = new Impresion(productos.length+1, nombreInput.value, tamañoInput.value, complejidadInput.value)
-    console.log(impresionCreada)
-    //agregar al array
-    productos.push(impresionCreada)
-    //para chequear
-    console.log(nombreInput.value)
-    console.log(tamañoInput.value)
-    console.log(complejidadInput.value)
-    console.log(productos);
+    if (nombreInput.value == ""){
+            console.log("hola");
+            swal({
+                title: "Ingrese un nombre",
+                text: "Elija un nombre para lo que quiera imprimir",
+                icon: "error",
+                button: "Ok, voy a ingresar algo"
+        })
     }
 
+    else{
+        let impresionCreada = new Impresion(acumuladorId, nombreInput.value, tamañoInput.value, complejidadInput.value)
+        console.log(impresionCreada)
+        //agregar al array
+        productos.push(impresionCreada)
+        //aumentar acumulador
+        acumuladorId
+        //para chequear
+        console.log(nombreInput.value)
+        console.log(tamañoInput.value)
+        console.log(complejidadInput.value)
+        console.log(productos);
+    }
+}
 
 function desestructurador (objeto) {
-    return {nombre, tamaño, complejidad} = objeto  
+    return {id, nombre, tamaño, complejidad} = objeto  
 }
 
 let carrito = document.getElementById("carrito")
@@ -77,9 +94,19 @@ function mostrarCarrito(){
         desestructurador (impresion)  //desestructuracion
         let factorComplejidad = convertirComplejidad(complejidad)
         let nuevaImpresion = document.createElement("div")
-        nuevaImpresion.innerHTML = `<p class = "mx-auto p-2">${nombre} tiene un tamaño de ${tamaño}cm y una complejidad ${complejidad}, lo que significa un costo de $${factorComplejidad* tamaño * precioBase} y una demora de aproximadamente ${tamaño*factorComplejidad/factorVelocidad} días.</p>`
-        carrito.appendChild(nuevaImpresion) //agrega esto alfinal del elemento
+        nuevaImpresion.classList.add ("d-flex", "flex-row", "m-auto")
+        nuevaImpresion.innerHTML = `<p class = "mx-auto p-1">${nombre} tiene un tamaño de ${tamaño}cm y una complejidad ${complejidad}, lo que significa un costo de $${factorComplejidad* tamaño * precioBase} y una demora de aproximadamente ${tamaño*factorComplejidad/factorVelocidad} días.</p> <button class="btn btn-outline-secondary eliminar" onclick="eliminarItem(${id})">Eliminar del carro</button>`
+        carrito.appendChild(nuevaImpresion) //agrega esto al final del elemento
     }) 
+    
+}
+
+function eliminarItem(id){
+    console.log("hola" + id);
+    console.log(productos);
+    productos.splice(id-1, 1)
+    console.log(productos);
+    mostrarCarrito()
 }
 
 function guardarCarrito(){
@@ -90,7 +117,7 @@ function guardarCarrito(){
             title: "Carritto vacío!",
             text: "Su carrito está vacío, no hay nada para guardar.",
             icon: "error",
-            confirmButtonText: "Ok, voy a agregar algo"
+            button: "Ok, voy a agregar algo"
         })
     }
     else { localStorage.setItem("memoriaCarrito", JSON.stringify(productos))
@@ -99,7 +126,7 @@ function guardarCarrito(){
         title: "Carritto guardado!",
         text: "Se ha guardado tu carrito con éxito.",
         icon: "success",
-        confirmButtonText: "Ok"
+        button: "Ok"
     })
     }
 }
@@ -109,7 +136,7 @@ function borrarCarrito(){
     actividadMemoria.innerHTML = "Se ha borrado su carrito"
     swal({
         text: "Se ha eliminado la memoria con éxito.",
-        confirmButtonText: "Ok"
+        button: "Ok"
     })
 }
 let gifRandom = Math.floor(Math.random()*27)
