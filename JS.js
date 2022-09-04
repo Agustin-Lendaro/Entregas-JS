@@ -101,13 +101,25 @@ function mostrarCarrito(){
     
 }
 
+function spliceID(){
+    productos.splice(id-1, 1)
+}
+
 function eliminarItem(id){
+    if (productos.length == 1){
+        console.log("asdfasdaksdm");
+        localStorage.removeItem("memoriaCarrito")
+        spliceID()
+        carrito.innerHTML=""      
+    }
+    else{
     console.log("hola" + id);
     console.log(productos);
-    productos.splice(id-1, 1)
+    spliceID()
     console.log(productos);
-    guardarCarrito()
+    localStorage.setItem("memoriaCarrito", JSON.stringify(productos))
     mostrarCarrito()
+    }
 }
 
 function guardarCarrito(){
